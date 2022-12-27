@@ -25,8 +25,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         openActivity2();
     }
 
-    public static void openactivity2(){
-        Intent intent;
-        
+    public void openActivity2(){
+        Intent intent = new Intent(this, MainActivity2.class);
+        startActivity(intent);
+
     }
 }
