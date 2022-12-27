@@ -10,6 +10,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button btn;
+    int i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
