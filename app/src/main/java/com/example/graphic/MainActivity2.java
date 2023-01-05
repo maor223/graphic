@@ -49,10 +49,20 @@ public class MainActivity2 extends AppCompatActivity implements View.OnTouchList
     }
 
     @Override
-    public boolean onTouch(View view, MotionEvent motionEvent) {
+    public boolean onTouch(View view, MotionEvent event) {
 
-        Intent intent = new Intent(this, ActivityBearWithShirt.class);
-        startActivity(intent);
-        return false;
+        float f = (float)0.8;
+
+        if (event.getAction()!=MotionEvent.ACTION_MOVE) {
+
+            if (event.getAction() == MotionEvent.ACTION_DOWN)
+                view.setAlpha(f);
+            if (event.getAction() == MotionEvent.ACTION_UP) {
+                view.setAlpha(1);
+                Intent intent = new Intent(this, ActivityBearWithShirt.class);
+                startActivity(intent);
+            }
+        }
+        return true;
     }
 }
