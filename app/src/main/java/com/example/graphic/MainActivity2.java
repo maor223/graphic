@@ -8,15 +8,23 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
 
-public class MainActivity2 extends AppCompatActivity {
+public class MainActivity2 extends AppCompatActivity implements View.OnTouchListener {
+
+    ImageView bear1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+        bear1 = findViewById(R.id.ivBear);
+        bear1.setOnTouchListener(this);
     }
 
     @Override
@@ -40,4 +48,11 @@ public class MainActivity2 extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+
+        Intent intent = new Intent(this, ActivityBearWithShirt.class);
+        startActivity(intent);
+        return false;
+    }
 }
