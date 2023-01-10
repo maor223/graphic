@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 public class MainActivity2 extends AppCompatActivity implements View.OnTouchListener {
 
-    ImageView bear1;
+    ImageView bear1, shirt1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +25,9 @@ public class MainActivity2 extends AppCompatActivity implements View.OnTouchList
 
         bear1 = findViewById(R.id.ivBear);
         bear1.setOnTouchListener(this);
+
+        shirt1 = findViewById(R.id.ivShirt);
+        shirt1.setOnTouchListener(this);
     }
 
     @Override
@@ -53,16 +56,32 @@ public class MainActivity2 extends AppCompatActivity implements View.OnTouchList
 
         float f = (float)0.8;
 
-        if (event.getAction()!=MotionEvent.ACTION_MOVE) {
+        if(view==bear1){
+            if (event.getAction()!=MotionEvent.ACTION_MOVE) {
 
-            if (event.getAction() == MotionEvent.ACTION_DOWN)
-                view.setAlpha(f);
-            if (event.getAction() == MotionEvent.ACTION_UP) {
-                view.setAlpha(1);
-                Intent intent = new Intent(this, ActivityBearWithShirt.class);
-                startActivity(intent);
+                if (event.getAction() == MotionEvent.ACTION_DOWN)
+                    view.setAlpha(f);
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    view.setAlpha(1);
+                    Intent intent = new Intent(this, ActivityBearWithShirt.class);
+                    intent.putExtra("Bear1",R.id.ivBear);
+                    startActivity(intent);
+                }
             }
         }
+        else{
+            if (event.getAction()!=MotionEvent.ACTION_MOVE) {
+
+                if (event.getAction() == MotionEvent.ACTION_DOWN)
+                    view.setAlpha(f);
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    view.setAlpha(1);
+                    Intent intent = new Intent(this, ActivityBearWithShirt.class);
+                    startActivity(intent);
+                }
+            }
+        }
+
         return true;
     }
 }
