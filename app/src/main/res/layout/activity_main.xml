@@ -29,6 +29,7 @@
                     android:background="@drawable/yellow_shirt" />
 
                 <TextView
+                    android:id="@+id/tvShirts"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -55,6 +56,7 @@
                     android:background="@drawable/towel" />
 
                 <TextView
+                    android:id="@+id/tvTowels"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -81,6 +83,7 @@
                     android:background="@drawable/pillow" />
 
                 <TextView
+                    android:id="@+id/tvPillows"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -94,5 +97,6 @@
         </LinearLayout>
 
     </HorizontalScrollView>
+
 
 </LinearLayout>

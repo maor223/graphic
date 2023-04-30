@@ -7,9 +7,10 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnTouchListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     LinearLayout Lshirts, Ltowels, Lpillows;
 
     @Override
@@ -18,32 +19,30 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         setContentView(R.layout.activity_main);
 
         Lshirts = findViewById(R.id.shirts);
-        Lshirts.setOnTouchListener(this);
+        Lshirts.setOnClickListener(this);
         Ltowels = findViewById(R.id.towels);
-        Ltowels.setOnTouchListener(this);
+        Ltowels.setOnClickListener(this);
         Lpillows = findViewById(R.id.pillows);
-        Lpillows.setOnTouchListener(this);
+        Lpillows.setOnClickListener(this);
 
     }
 
     @Override
-    public boolean onTouch(View v, MotionEvent motionEvent) {
-        if(v==Lshirts){
-            OpenItemActivity(Lshirts);
-        }
-        if(v==Ltowels){
-            Toast.makeText(this, "towel", Toast.LENGTH_SHORT).show();
-        }
-        if(v==Lpillows){
-            Toast.makeText(this, "pillow", Toast.LENGTH_SHORT).show();
-        }
-        return false;
-    }
-    public void OpenItemActivity(LinearLayout L){
+    public void onClick(View view) {
         Intent intent = new Intent(MainActivity.this, ItemSelectedActivity.class);
-        if (L==Lshirts){
-            intent.putExtra("shirt",R.drawable.ic_baseline_account_balance_24);
+        switch (view.getId()){
+
+            case R.id.shirts:
+                intent.putExtra("name", R.id.tvShirts);
+                startActivity(intent);
+
+            case R.id.pillows:
+                intent.putExtra("name", R.id.tvTowels);
+                startActivity(intent);
+
+            case R.id.towels:
+                intent.putExtra("name", R.id.tvPillows);
+                startActivity(intent);
         }
-        startActivity(intent);
     }
 }
