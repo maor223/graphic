@@ -30,12 +30,14 @@ public class ItemSelectedActivity extends AppCompatActivity {
         }
 
     }
-    public void SetUp(String name){
+    private void SetUp(String name){
         if (name.equals("חולצות")){
             iv1.setImageResource(R.drawable.yellow_shirt);
+            tv1.setText(name);
         }
         else if (name.equals("כריות")){
             iv1.setImageResource(R.drawable.yellow_shirt);
+            tv1.setText(name);
         }
     }
 
