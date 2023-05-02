@@ -10,6 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     LinearLayout Lshirts, Ltowels, Lpillows;
 
@@ -30,19 +32,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         Intent intent = new Intent(MainActivity.this, ItemSelectedActivity.class);
-        switch (view.getId()){
-
-            case R.id.shirts:
-                intent.putExtra("name", R.id.tvShirts);
-                startActivity(intent);
-
-            case R.id.pillows:
-                intent.putExtra("name", R.id.tvTowels);
-                startActivity(intent);
-
-            case R.id.towels:
-                intent.putExtra("name", R.id.tvPillows);
-                startActivity(intent);
+        if (view==Lshirts){
+            intent.putExtra("name", "חולצות");
+            startActivity(intent);
+        }
+        if (view==Ltowels){
+            intent.putExtra("name", "מגבות");
+            startActivity(intent);
+        }
+        if (view==Lpillows){
+            intent.putExtra("name", "כריות");
+            startActivity(intent);
         }
     }
 }

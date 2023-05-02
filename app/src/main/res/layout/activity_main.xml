@@ -7,6 +7,52 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="sign in"
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="login"
+                />
+        </LinearLayout>
+
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:orientation="vertical">
+           <EditText
+               android:layout_width="300dp"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:inputType="text"
+               android:hint="username"
+               android:textSize="30dp"
+               />
+           <EditText
+               android:layout_width="300dp"
+               android:layout_height="wrap_content"
+               android:inputType="numberPassword"
+               android:layout_gravity="center"
+               android:hint="password"
+               android:textSize="30dp"
+               />
+       </LinearLayout>
+    </LinearLayout>
+
     <HorizontalScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -97,6 +143,5 @@
         </LinearLayout>
 
     </HorizontalScrollView>
-
 
 </LinearLayout>

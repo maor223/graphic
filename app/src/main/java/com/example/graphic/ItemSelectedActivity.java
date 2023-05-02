@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,6 +13,7 @@ public class ItemSelectedActivity extends AppCompatActivity {
     TextView tv1;
     ImageView iv1;
     Bundle bundle;
+    String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,23 +23,17 @@ public class ItemSelectedActivity extends AppCompatActivity {
         iv1 = findViewById(R.id.iv1);
 
         bundle = getIntent().getExtras();
-
-        if (bundle!=null){
-
-            String name = bundle.getString("name");
-
-            SetUp(name);
-        }
-
-    }
-    private void SetUp(String name){
-        if (name.equals("חולצות")){
-            iv1.setImageResource(R.drawable.yellow_shirt);
-            tv1.setText(name);
-        }
-        else if (name.equals("כריות")){
-            iv1.setImageResource(R.drawable.yellow_shirt);
-            tv1.setText(name);
+        if (bundle != null) {
+            name = bundle.getString("name");
+            if (name != null) {
+                tv1.setText(name);
+                if (name.equals("חולצות"))
+                    iv1.setImageResource(R.drawable.yellow_shirt);
+                else if (name.equals("מגבות"))
+                    iv1.setImageResource(R.drawable.towel);
+                else if (name.equals("כריות"))
+                    iv1.setImageResource(R.drawable.pillow);
+            }
         }
     }
 
