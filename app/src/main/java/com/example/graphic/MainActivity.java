@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(MainActivity.this, ItemSelectedActivity.class);
         Intent intent2 = new Intent(MainActivity.this, CategoryActivity.class);
         if (view==Lshirts){
-            intent.putExtra("name", "חולצות");
+            intent.putExtra("categoryName", "חולצות");
+            intent.putExtra("productName", "חולצת דרייפיט עם הדפס");
             startActivity(intent);
         }
         if (view==Ltowels){
