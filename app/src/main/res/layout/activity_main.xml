@@ -7,95 +7,166 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <HorizontalScrollView
+    <ScrollView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            //חולצות
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            //Linear layout of two pictures
             <LinearLayout
-                android:id="@+id/shirts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/shirt_background"
-                android:orientation="vertical">
+                android:orientation="horizontal">
+                //מגבות
+                <LinearLayout
+                    android:id="@+id/towels"
+                    android:layout_width="150dp"
+                    android:layout_height="160dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/towel_background"
+                    android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/yellow_shirt" />
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/towel" />
 
-                <TextView
-                    android:id="@+id/tvShirts"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="5dp"
-                    android:text="חולצות"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tvTowels"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="5dp"
+                        android:text="מגבות"
+                        android:textColor="@color/black"
+                        android:textSize="25dp"
+                        android:textStyle="bold" />
 
+                </LinearLayout>
+                //כריות
+                <LinearLayout
+                    android:id="@+id/pillows"
+                    android:layout_width="150dp"
+                    android:layout_height="160dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/pillow_background"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/pillow" />
+
+                    <TextView
+                        android:id="@+id/tvPillows"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="5dp"
+                        android:text="כריות"
+                        android:textColor="@color/black"
+                        android:textSize="25dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+        </LinearLayout>
+            //Linear layout of two pictures
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                //מחזיק מפתחות
+                <LinearLayout
+                    android:id="@+id/keyChains"
+                    android:layout_width="150dp"
+                    android:layout_height="160dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/key_chain_background"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/towel" />
+
+                    <TextView
+                        android:id="@+id/tvkeyChain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="5dp"
+                        android:text="מחזיקי מפתחות"
+                        android:textColor="@color/black"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+                //לוח שנה
+                <LinearLayout
+                    android:id="@+id/calendar"
+                    android:layout_width="150dp"
+                    android:layout_height="160dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/calendar_background"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/towel" />
+
+                    <TextView
+                        android:id="@+id/tvCalendar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="5dp"
+                        android:text="לוחות שנה"
+                        android:textColor="@color/black"
+                        android:textSize="25dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
             </LinearLayout>
-            //מגבות
+            //מארזים
             <LinearLayout
-                android:id="@+id/towels"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/towel_background"
+                android:id="@+id/maarazim"
+                android:layout_width="150dp"
+                android:layout_height="160dp"
+                android:layout_margin="20dp"
+                android:background="@drawable/maaraz_background"
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_margin="10dp"
+                    android:layout_gravity="center"
                     android:background="@drawable/towel" />
 
                 <TextView
-                    android:id="@+id/tvTowels"
+                    android:id="@+id/tvMaarazim"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="5dp"
-                    android:text="מגבות"
+                    android:text="מארזים"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-            //כריות
-            <LinearLayout
-                android:id="@+id/pillows"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/pillow_background"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/pillow" />
-
-                <TextView
-                    android:id="@+id/tvPillows"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="5dp"
-                    android:text="כריות"
-                    android:textColor="@color/black"
-                    android:textSize="20dp"
+                    android:textSize="25dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
         </LinearLayout>
 
-    </HorizontalScrollView>
+    </ScrollView>
 
 </LinearLayout>

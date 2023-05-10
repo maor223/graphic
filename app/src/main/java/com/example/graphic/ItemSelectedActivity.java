@@ -24,18 +24,18 @@ public class ItemSelectedActivity extends AppCompatActivity {
             categoryName = bundle.getString("categoryName");
             productName = bundle.getString("productName");
             if (categoryName != null && productName != null) {
-                if (categoryName.equals("חולצות"))
-                    ProductShirt(productName);
-                else if (categoryName.equals("מגבות"))
+                if (categoryName.equals("מגבות"))
                     ProductTowel(productName);
                 else if (categoryName.equals("כריות"))
-                    iv1.setImageResource(R.drawable.pillow);
+                    ProductPillow(productName);
+                else if (categoryName.equals("מחזיקי מפתחות"))
+                    ProductKeyChain(productName);
+                else if (categoryName.equals("לוחות שנה"))
+                    ProductCalender(productName);
+                else if (categoryName.equals("מארזים"))
+                    ProductMaarazim(productName);
             }
         }
-    }
-    public void ProductShirt(String productName){
-        tv1.setText(productName);
-        iv1.setImageResource(R.drawable.shirt);
     }
     public void ProductTowel(String productName){
         if (productName.equals("מגבת גוף מיקרופייבר")){
@@ -71,6 +71,52 @@ public class ItemSelectedActivity extends AppCompatActivity {
         if (productName.equals("כרית תאריך לידה")){
             tv1.setText(productName);
             iv1.setImageResource(R.drawable.birth_pillow);
+        }
+    }
+    public void ProductKeyChain(String productName){
+        if (productName.equals("מחזיק מפתחות דובי")){
+            tv1.setText(productName);
+            iv1.setImageResource(R.drawable.bear_key_chain);
+        }
+        if (productName.equals("מחזיק מפתחות מעץ בית")){
+            tv1.setText(productName);
+            iv1.setImageResource(R.drawable.house_key_chain);
+        }
+        if (productName.equals("מחזיק מפתחות מעץ ריבוע")){
+            tv1.setText(productName);
+            iv1.setImageResource(R.drawable.square_key_chain);
+        }
+    }
+    public void ProductCalender(String productName){
+        if (productName.equals("לוח שנה על בלוק")){
+            tv1.setText(productName);
+            iv1.setImageResource(R.drawable.block_calendar);
+        }
+        if (productName.equals("לוח שנה קטן מגנט")){
+            tv1.setText(productName);
+            iv1.setImageResource(R.drawable.mini_calendar);
+        }
+        if (productName.equals("לוח שנה לועזי כולל מגנט עליון")){
+            tv1.setText(productName);
+            iv1.setImageResource(R.drawable.calendar);
+        }
+    }
+    public void ProductMaarazim(String productName){
+        if (productName.equals("מארז לפסח")){
+            tv1.setText(productName);
+            iv1.setImageResource(R.drawable.pesach);
+        }
+        if (productName.equals("מארז למנגליסט")){
+            tv1.setText(productName);
+            iv1.setImageResource(R.drawable.mangal);
+        }
+        if (productName.equals("מארז לתינוק")){
+            tv1.setText(productName);
+            iv1.setImageResource(R.drawable.maaraz1);
+        }
+        if (productName.equals("מארז לאמא/אבא")){
+            tv1.setText(productName);
+            iv1.setImageResource(R.drawable.maaraz2);
         }
     }
 

@@ -12,10 +12,17 @@
         <entry key="..\:/Users/student/AndroidStudioProjects/graphic/app/src/main/res/layout/activity_main.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/student/AndroidStudioProjects/graphic/app/src/main/res/layout/activity_splash_screen.xml" value="0.22" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1625" />
+        <entry key="app/src/main/res/drawable/calendar_background.xml" value="0.1625" />
+        <entry key="app/src/main/res/drawable/key_chain_background.xml" value="0.1625" />
+        <entry key="app/src/main/res/drawable/maaraz_background.xml" value="0.1625" />
+        <entry key="app/src/main/res/drawable/pillow_background.xml" value="0.1625" />
+        <entry key="app/src/main/res/drawable/towel_background.xml" value="0.1625" />
         <entry key="app/src/main/res/layout/activity_category.xml" value="0.15885416666666666" />
         <entry key="app/src/main/res/layout/activity_item_selected.xml" value="0.2601851851851852" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2601851851851852" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/login_dialog.xml" value="0.20677083333333332" />
+        <entry key="app/src/main/res/menu/navigation_menu.xml" value="0.2078125" />
       </map>
     </option>
   </component>

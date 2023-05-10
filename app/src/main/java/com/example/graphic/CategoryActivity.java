@@ -54,6 +54,15 @@ public class CategoryActivity extends AppCompatActivity implements View.OnClickL
                 } else if (name.equals("כריות")) {
                     pillowes();
                 }
+                else if (name.equals("מחזיקי מפתחות")) {
+                    keyChain();
+                }
+                else if (name.equals("לוחות שנה")) {
+                    calender();
+                }
+                else if (name.equals("מארזים")) {
+                    maarazim();
+                }
             }
         }
     }
@@ -77,6 +86,32 @@ public class CategoryActivity extends AppCompatActivity implements View.OnClickL
         tv3.setText("כרית לב");
         iv4.setImageResource(R.drawable.birth_pillow);
         tv4.setText("כרית תאריך לידה");
+    }
+    public void keyChain(){
+        iv1.setImageResource(R.drawable.bear_key_chain);
+        tv1.setText("מחזיק מפתחות דובי");
+        iv2.setImageResource(R.drawable.house_key_chain);
+        tv2.setText("מחזיק מפתחות מעץ בית");
+        iv3.setImageResource(R.drawable.square_key_chain);
+        tv3.setText("מחזיק מפתחות מעץ ריבוע");
+    }
+    public void calender(){
+        iv1.setImageResource(R.drawable.block_calendar);
+        tv1.setText("לוח שנה על בלוק");
+        iv2.setImageResource(R.drawable.mini_calendar);
+        tv2.setText("לוח שנה קטן מגנט");
+        iv3.setImageResource(R.drawable.calendar);
+        tv3.setText("לוח שנה לועזי כולל מגנט עליון");
+    }
+    public void maarazim(){
+        iv1.setImageResource(R.drawable.pesach);
+        tv1.setText("מארז לפסח");
+        iv2.setImageResource(R.drawable.mangal);
+        tv2.setText("מארז למנגליסט");
+        iv3.setImageResource(R.drawable.maaraz1);
+        tv3.setText("מארז לתינוק");
+        iv4.setImageResource(R.drawable.maaraz2);
+        tv4.setText("מארז לאמא/אבא");
     }
 
     @Override
