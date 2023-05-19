@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    LinearLayout Ltowels, Lpillows, Lkeychain, Lcalender, Lmaaraz;
+    LinearLayout Ltowels, Lpillows, Lkeychain, Lcalender, Lmaaraz, Lbaby, Lother;
     Dialog dialog;
     EditText etUsername, etPassword;
     Button btnLogin;
@@ -37,6 +37,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Ltowels.setOnClickListener(this);
         Lpillows = findViewById(R.id.pillows);
         Lpillows.setOnClickListener(this);
+        Lbaby = findViewById(R.id.babies);
+        Lbaby.setOnClickListener(this);
+        Lother = findViewById(R.id.others);
+        Lother.setOnClickListener(this);
 
     }
 
@@ -47,20 +51,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             intent.putExtra("name", "מגבות");
             startActivity(intent);
         }
-        if (view==Lpillows){
+        else if (view==Lpillows){
             intent.putExtra("name", "כריות");
             startActivity(intent);
         }
-        if (view==Lkeychain){
+        else if (view==Lkeychain){
             intent.putExtra("name", "מחזיקי מפתחות");
             startActivity(intent);
         }
-        if (view==Lcalender){
+        else if (view==Lcalender){
             intent.putExtra("name", "לוחות שנה");
             startActivity(intent);
         }
-        if (view==Lmaaraz){
+        else if (view==Lmaaraz){
             intent.putExtra("name", "מארזים");
+            startActivity(intent);
+        }
+        else if (view==Lbaby){
+            intent.putExtra("name", "תינוקות");
+            startActivity(intent);
+        }
+        else if (view==Lother){
+            intent.putExtra("name", "עוד");
             startActivity(intent);
         }
     }

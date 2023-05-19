@@ -137,9 +137,70 @@
 
                 </LinearLayout>
             </LinearLayout>
-            //מארזים
+
+            //Linear layout of two pictures
             <LinearLayout
-                android:id="@+id/maarazim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                //מארזים
+                <LinearLayout
+                    android:id="@+id/maarazim"
+                    android:layout_width="150dp"
+                    android:layout_height="160dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/maaraz_background"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/towel" />
+
+                    <TextView
+                        android:id="@+id/tvMaarazim"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="5dp"
+                        android:text="מארזים"
+                        android:textColor="@color/black"
+                        android:textSize="25dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+                //תינוקות
+                <LinearLayout
+                    android:id="@+id/babies"
+                    android:layout_width="150dp"
+                    android:layout_height="160dp"
+                    android:layout_margin="20dp"
+                    android:background="@drawable/maaraz_background"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/towel" />
+
+                    <TextView
+                        android:id="@+id/tvBabies"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="5dp"
+                        android:text="תינוקות"
+                        android:textColor="@color/black"
+                        android:textSize="25dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/others"
                 android:layout_width="150dp"
                 android:layout_height="160dp"
                 android:layout_margin="20dp"
@@ -154,17 +215,18 @@
                     android:background="@drawable/towel" />
 
                 <TextView
-                    android:id="@+id/tvMaarazim"
+                    android:id="@+id/tvOthers"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="5dp"
-                    android:text="מארזים"
+                    android:text="עוד"
                     android:textColor="@color/black"
                     android:textSize="25dp"
                     android:textStyle="bold" />
 
             </LinearLayout>
+
         </LinearLayout>
 
     </ScrollView>

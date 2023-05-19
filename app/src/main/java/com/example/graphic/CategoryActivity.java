@@ -50,24 +50,30 @@ public class CategoryActivity extends AppCompatActivity implements View.OnClickL
             if (name != null) {
                 categoryTv1.setText(name);
                 if (name.equals("מגבות")) {
-                    towels();
+                    Towels();
                 } else if (name.equals("כריות")) {
-                    pillowes();
+                    Pillowes();
                 }
                 else if (name.equals("מחזיקי מפתחות")) {
-                    keyChain();
+                    KeyChain();
                 }
                 else if (name.equals("לוחות שנה")) {
-                    calender();
+                    Calender();
                 }
                 else if (name.equals("מארזים")) {
-                    maarazim();
+                    Maarazim();
+                }
+                else if (name.equals("תינוקות")) {
+                    Babies();
+                }
+                else if (name.equals("עוד")) {
+                    Others();
                 }
             }
         }
     }
 
-    public void towels(){
+    public void Towels(){
         iv1.setImageResource(R.drawable.micro_body_towel_1);
         tv1.setText("מגבת גוף מיקרופייבר");
         iv2.setImageResource(R.drawable.bear_towel);
@@ -77,7 +83,7 @@ public class CategoryActivity extends AppCompatActivity implements View.OnClickL
         iv4.setImageResource(R.drawable.body_towel);
         tv4.setText("מגבת גוף");
     }
-    public void pillowes(){
+    public void Pillowes(){
         iv1.setImageResource(R.drawable.patterned_pillow);
         tv1.setText("כרית עם הדפס");
         iv2.setImageResource(R.drawable.pillow_cover_1);
@@ -87,7 +93,7 @@ public class CategoryActivity extends AppCompatActivity implements View.OnClickL
         iv4.setImageResource(R.drawable.birth_pillow);
         tv4.setText("כרית תאריך לידה");
     }
-    public void keyChain(){
+    public void KeyChain(){
         iv1.setImageResource(R.drawable.bear_key_chain);
         tv1.setText("מחזיק מפתחות דובי");
         iv2.setImageResource(R.drawable.house_key_chain);
@@ -95,7 +101,7 @@ public class CategoryActivity extends AppCompatActivity implements View.OnClickL
         iv3.setImageResource(R.drawable.square_key_chain);
         tv3.setText("מחזיק מפתחות מעץ ריבוע");
     }
-    public void calender(){
+    public void Calender(){
         iv1.setImageResource(R.drawable.block_calendar);
         tv1.setText("לוח שנה על בלוק");
         iv2.setImageResource(R.drawable.mini_calendar);
@@ -103,7 +109,7 @@ public class CategoryActivity extends AppCompatActivity implements View.OnClickL
         iv3.setImageResource(R.drawable.calendar);
         tv3.setText("לוח שנה לועזי כולל מגנט עליון");
     }
-    public void maarazim(){
+    public void Maarazim(){
         iv1.setImageResource(R.drawable.pesach);
         tv1.setText("מארז לפסח");
         iv2.setImageResource(R.drawable.mangal);
@@ -112,6 +118,24 @@ public class CategoryActivity extends AppCompatActivity implements View.OnClickL
         tv3.setText("מארז לתינוק");
         iv4.setImageResource(R.drawable.maaraz2);
         tv4.setText("מארז לאמא/אבא");
+    }
+    public void Babies(){
+        iv1.setImageResource(R.drawable.baby_apron);
+        tv1.setText("סינר תינוק");
+        iv2.setImageResource(R.drawable.baby_bodysuit);
+        tv2.setText("בגד גוף תינוק ללא רגלית");
+        iv3.setImageResource(R.drawable.cloth_diaperes);
+        tv3.setText("חיתולי בד עם הטבעת שם");
+    }
+    public void Others(){
+        iv1.setImageResource(R.drawable.shirt);
+        tv1.setText("חולצת דרייפיט עם הדפס");
+        iv2.setImageResource(R.drawable.cup);
+        tv2.setText("ספל במיתוג אישי");
+        iv3.setImageResource(R.drawable.block);
+        tv3.setText("בלוק עץ אורן עם תמונה");
+        iv4.setImageResource(R.drawable.cutting_board);
+        tv4.setText("קרש חיתוך צריבה מעוצבת");
     }
 
     @Override
