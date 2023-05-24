@@ -8,16 +8,17 @@
     tools:context=".MainActivity">
 
     <ScrollView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             //Linear layout of two pictures
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:orientation="horizontal">
                 //מגבות
                 <LinearLayout
@@ -79,6 +80,7 @@
             //Linear layout of two pictures
             <LinearLayout
                 android:layout_width="wrap_content"
+                android:layout_gravity="center"
                 android:layout_height="wrap_content">
                 //מחזיק מפתחות
                 <LinearLayout
@@ -141,6 +143,7 @@
             //Linear layout of two pictures
             <LinearLayout
                 android:layout_width="wrap_content"
+                android:layout_gravity="center"
                 android:layout_height="wrap_content">
                 //מארזים
                 <LinearLayout
@@ -203,7 +206,8 @@
                 android:id="@+id/others"
                 android:layout_width="150dp"
                 android:layout_height="160dp"
-                android:layout_margin="20dp"
+                android:layout_marginLeft="36dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/maaraz_background"
                 android:orientation="vertical">
 

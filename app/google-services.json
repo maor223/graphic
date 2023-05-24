@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "707516811635",
+    "firebase_url": "https://graphic-994d5-default-rtdb.firebaseio.com",
+    "project_id": "graphic-994d5",
+    "storage_bucket": "graphic-994d5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:707516811635:android:18f802572e12c1af299d06",
+        "android_client_info": {
+          "package_name": "com.example.graphic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "707516811635-jpfu848a94it0a1arnd8rvckepcoom2s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCup8h_2vZkm4HN7JGVHOwjgLb92pBlT9U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "707516811635-jpfu848a94it0a1arnd8rvckepcoom2s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

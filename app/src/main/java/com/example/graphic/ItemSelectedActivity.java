@@ -2,13 +2,18 @@ package com.example.graphic;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class ItemSelectedActivity extends AppCompatActivity {
+public class ItemSelectedActivity extends AppCompatActivity implements View.OnClickListener {
     TextView tv1;
     ImageView iv1;
+    Button btnOrder;
     Bundle bundle;
     String categoryName, productName;
 
@@ -16,6 +21,8 @@ public class ItemSelectedActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_selected);
+        btnOrder = findViewById(R.id.btnOrder);
+        btnOrder.setOnClickListener(this);
         tv1 = findViewById(R.id.tv1);
         iv1 = findViewById(R.id.iv1);
 
@@ -163,4 +170,10 @@ public class ItemSelectedActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onClick(View view) {
+        Intent intent = new Intent(ItemSelectedActivity.this, OrderForm.class);
+        intent.putExtra("productName", tv1.getText().toString());
+        startActivity(intent);
+    }
 }

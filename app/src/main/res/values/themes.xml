@@ -13,4 +13,13 @@
         <item name="android:statusBarColor">@color/purple_500</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Theme.Graphic.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Graphic.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Graphic.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
