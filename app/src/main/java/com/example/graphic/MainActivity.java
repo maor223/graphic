@@ -9,7 +9,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -24,14 +26,15 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     LinearLayout Ltowels, Lpillows, Lkeychain, Lcalender, Lmaaraz, Lbaby, Lother;
-    Dialog dialog;
-    EditText etUsername, etPassword;
-    Button btnLogin;
     private static final int REQUEST_CALL = 1;
+    final String adress = "geo:32.165567,35.085866";
     int count = 0;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +56,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Lother = findViewById(R.id.others);
         Lother.setOnClickListener(this);
 
+        mAuth = FirebaseAuth.getInstance();
+
     }
+
 
     @Override
     public void onClick(View view) {
@@ -92,7 +98,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.menu, menu);
+        if (mAuth.getCurrentUser()==null){
+            getMenuInflater().inflate(R.menu.login_menu, menu);
+        }
+        else{
+            getMenuInflater().inflate(R.menu.menu, menu);
+        }
+
         return true;
     }
 
@@ -102,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id = item.getItemId();
         if (id==R.id.maps){
             Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse("geo:32.165567,35.085866"));
+            intent.setData(Uri.parse(adress));
             Intent chooser=Intent.createChooser(intent,"Launch Map");
             startActivity(chooser);
         }
@@ -110,28 +122,78 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             checkPhoneCall();
         }
         else if(id==R.id.login){
-            createLoginDialog();
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
         }
         else if (id==R.id.logout){
-
+            mAuth.signOut();
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
         }
         return true;
     }
+
+    //checking if permission confirmed
     public void checkPhoneCall(){
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE)!= PackageManager.PERMISSION_GRANTED){
-            //go to setting applications
-                Toast.makeText(this, "Please allow write to storage permission setting", Toast.LENGTH_LONG);
-                Intent intent = new Intent();
-                intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                Uri uri = Uri.fromParts("package", this.getPackageName(), null);
-                intent.setData(uri);
-                this.startActivity(intent);
+            if (count==0){
+                count++;
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+            }
+            else{
+                if (count==1)
+                    showPermissionExplenation(REQUEST_CALL);
+                else{
+                    Toast.makeText(this, "אין לך הרשאה", Toast.LENGTH_SHORT);
+                }
 
+            }
         }
-        else
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+        else{
+            AlertDialog d = new AlertDialog.Builder(this)
+                    .setTitle("הרשאה").setMessage("יש לך הרשאה")
+                    .create();
+            d.show();
+        }
 
+    }
+    //showing explain of the Alert
+    public void showPermissionExplenation(final int permission){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        if (permission==REQUEST_CALL){
+            builder.setTitle("הרשאת פלאפון");
+            builder.setMessage("אנא אשר הרשאה דרל הגדרות האפליקציה");
+        }
+        builder.setPositiveButton("אשר", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (permission==REQUEST_CALL){
+                    count=5;
+                    settingsPermission();
+                }
+            }
+        });
+        builder.setNegativeButton("מסרב", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                count=1;
+                dialogInterface.dismiss();
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
 
+    }
+
+    //go to setting applications
+    public int settingsPermission(){
+        Intent intent = new Intent();
+        intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        Uri uri = Uri.fromParts("package", this.getPackageName(), null);
+        intent.setData(uri);
+        this.startActivity(intent);
+        checkPhoneCall();
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE)!= PackageManager.PERMISSION_GRANTED)
+            return count = 1;
+        return count = 0;
     }
 
     @Override
@@ -145,18 +207,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
         }
-    }
-
-    //dialog
-    public void createLoginDialog(){
-        dialog = new Dialog(this);
-        dialog.setContentView(R.layout.login_dialog);
-        dialog.setTitle("Login");
-        dialog.setCancelable(true);
-        etUsername=(EditText)dialog.findViewById(R.id.etUserName);
-        etPassword=(EditText)dialog.findViewById(R.id.etPassword);
-        btnLogin=(Button)dialog.findViewById(R.id.btnLogin);
-        btnLogin.setOnClickListener(this);
-        dialog.show();
     }
 }

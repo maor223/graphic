@@ -1,9 +1,12 @@
 package com.example.graphic;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -168,6 +171,21 @@ public class ItemSelectedActivity extends AppCompatActivity implements View.OnCl
             tv1.setText(productName);
             iv1.setImageResource(R.drawable.cutting_board);
         }
+    }
+
+    //menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.home_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        super.onOptionsItemSelected(item);
+        startActivity(new Intent(ItemSelectedActivity.this, MainActivity.class));
+        return true;
     }
 
     @Override
