@@ -6,12 +6,18 @@
         android:title="נקודת איסוף"/>
     <item
         android:id="@+id/call"
-        android:title="יצירת קשר"/>
+        android:title="יצירת קשר">
+        <menu>
+            <item
+                android:id="@+id/phone"
+                android:title="באמצעות פלאפון"/>
+            <item
+                android:id="@+id/sms"
+                android:title="באמצעות הודעה"/>
+        </menu>
+    </item>
     <item
         android:id="@+id/login"
         android:title="התחברות"/>
-    <item
-        android:id="@+id/logout"
-        android:title="התנתקות"/>
 
 </menu>

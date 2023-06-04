@@ -7,6 +7,12 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -20,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:orientation="horizontal">
-                //מגבות
+                // מגבות
                 <LinearLayout
                     android:id="@+id/towels"
                     android:layout_width="150dp"
@@ -48,7 +54,7 @@
                         android:textStyle="bold" />
 
                 </LinearLayout>
-                //כריות
+                // כריות
                 <LinearLayout
                     android:id="@+id/pillows"
                     android:layout_width="150dp"
@@ -82,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content">
-                //מחזיק מפתחות
+                // מחזיק מפתחות
                 <LinearLayout
                     android:id="@+id/keyChains"
                     android:layout_width="150dp"
@@ -110,7 +116,7 @@
                         android:textStyle="bold" />
 
                 </LinearLayout>
-                //לוח שנה
+                // לוח שנה
                 <LinearLayout
                     android:id="@+id/calendar"
                     android:layout_width="150dp"
@@ -145,7 +151,7 @@
                 android:layout_width="wrap_content"
                 android:layout_gravity="center"
                 android:layout_height="wrap_content">
-                //מארזים
+                // מארזים
                 <LinearLayout
                     android:id="@+id/maarazim"
                     android:layout_width="150dp"
@@ -173,7 +179,7 @@
                         android:textStyle="bold" />
 
                 </LinearLayout>
-                //תינוקות
+                // תינוקות
                 <LinearLayout
                     android:id="@+id/babies"
                     android:layout_width="150dp"
@@ -202,6 +208,7 @@
 
                 </LinearLayout>
             </LinearLayout>
+            // עוד
             <LinearLayout
                 android:id="@+id/others"
                 android:layout_width="150dp"

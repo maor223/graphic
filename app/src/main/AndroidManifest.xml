@@ -3,19 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.graphic">
 
-    <uses-permission android:name="android.permission.CALL_PHONE" />\
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/icon"
-        android:label="@string/app_name"
+        android:label="רחל זמן גרפיקה ועיצוב"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/Theme.Graphic"
         tools:targetApi="31">
+        <activity
+            android:name=".AllOrders"
+            android:exported="false" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />

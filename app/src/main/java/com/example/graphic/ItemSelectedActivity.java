@@ -13,12 +13,16 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class ItemSelectedActivity extends AppCompatActivity implements View.OnClickListener {
     TextView tv1;
     ImageView iv1;
     Button btnOrder;
     Bundle bundle;
     String categoryName, productName;
+
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +54,8 @@ public class ItemSelectedActivity extends AppCompatActivity implements View.OnCl
                     ProductOthers(productName);
             }
         }
+
+        mAuth = FirebaseAuth.getInstance();
     }
     //מגבות
     public void ProductTowel(String productName){
