@@ -64,7 +64,9 @@ public class LoginActivity extends AppCompatActivity {
             etLoginPassword.requestFocus();
         }
         else if (etLoginEmail.getText().toString().equals(ManagerEmail)){
-            startActivity (new Intent(LoginActivity.this, AllOrders.class));
+            etLoginEmail.setText("");
+            etLoginPassword.setText("");
+            startActivity(new Intent(LoginActivity.this, AllOrders.class));
         }
         else{
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -72,6 +74,8 @@ public class LoginActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
                         Toast.makeText(LoginActivity.this, "התחברות בוצעה בהצלחה", Toast.LENGTH_SHORT).show();
+                        etLoginEmail.setText("");
+                        etLoginPassword.setText("");
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     }
                     else{

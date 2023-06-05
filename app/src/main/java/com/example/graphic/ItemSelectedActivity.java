@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -196,8 +197,14 @@ public class ItemSelectedActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View view) {
-        Intent intent = new Intent(ItemSelectedActivity.this, OrderForm.class);
-        intent.putExtra("productName", tv1.getText().toString());
-        startActivity(intent);
+        if (mAuth.getCurrentUser()==null){
+            Toast.makeText(this, "אפשרות זו תפתח אחרי הרשמה", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(ItemSelectedActivity.this, LoginActivity.class));
+        }
+        else{
+            Intent intent = new Intent(ItemSelectedActivity.this, OrderForm.class);
+            intent.putExtra("productName", tv1.getText().toString());
+            startActivity(intent);
+        }
     }
 }

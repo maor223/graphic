@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".OrderForm">
+  <FrameLayout
+      android:id="@+id/frameLayout"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:visibility="gone"/>
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:text="המוצרים מוכנים אחרי שלושה ימי עסקים מרגע ההזמנה"
+      android:textSize="17dp"/>
+
   <ScrollView
       android:layout_width="match_parent"
       android:layout_height="match_parent">
@@ -96,11 +108,20 @@
           android:inputType="number"
           />
       <Button
+          android:id="@+id/btnArrivalTime"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="שעת הגעה"
+          android:textSize="35sp"
+          android:background="@drawable/custom_button"
+          android:layout_gravity="center"
+          android:layout_marginTop="20dp"/>
+      <Button
           android:id="@+id/btnConfirmOrder"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="אישור"
-          android:textSize="40dp"
+          android:textSize="40sp"
           android:background="@drawable/custom_button"
           android:layout_gravity="center"
           android:layout_marginTop="20dp"/>

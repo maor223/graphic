@@ -45,17 +45,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int count = 0;
     FirebaseAuth mAuth;
 
-    FrameLayout frameLayout;
-    FragmentManager fragmentManager;
-    FragmentTransaction fragmentTransaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        frameLayout = findViewById(R.id.frameLayout);
-        fragmentManager = getSupportFragmentManager();
 
         Lkeychain = findViewById(R.id.keyChains);
         Lkeychain.setOnClickListener(this);
@@ -132,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (id == R.id.sms) {
             openWhatsApp();
         } else if (id==R.id.order){
-            addFragment();
+            startActivity (new Intent(MainActivity.this, AllOrders.class));
         }else if (id == R.id.login) {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
         } else if (id == R.id.logout) {
@@ -140,17 +134,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
         }
         return true;
-    }
-
-    public void addFragment(){
-        frameLayout.setVisibility(View.VISIBLE);
-        OrderFragment orderFragment = (OrderFragment)fragmentManager.findFragmentByTag("order");
-        if (orderFragment==null){
-            orderFragment = new OrderFragment();
-            fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.add(R.id.frameLayout, orderFragment, "order");
-            fragmentTransaction.commit();
-        }
     }
 
     //checking if permission confirmed
@@ -167,7 +150,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
 
             }
-        } else {
+        }
+        // calling to the phoneNumber if their is permission
+        else {
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_CALL);
             Uri data = Uri.parse("tel:" + "52-11101111");
@@ -233,7 +218,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //opening whatsapp
     public void openWhatsApp(){
         try {
-            String text = "היי הייתי רוצה לקבל עוד פרטים לגבי המוצר שהזמנתי";// Replace with your message.
+            String text = "היי הייתי רוצה לקבל פרטים נוספים לגבי המוצר שהזמנתי";// Replace with your message.
 
             String toNumber = "972545561643"; // Replace with mobile phone number without +Sign or leading zeros, but with country code
             //Suppose your country is India and your phone number is “xxxxxxxxxx”, then you need to send “91xxxxxxxxxx”.

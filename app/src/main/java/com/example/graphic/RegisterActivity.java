@@ -62,6 +62,8 @@ public class RegisterActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         Toast.makeText(RegisterActivity.this, "הרשמה בוצעה בהצלחה", Toast.LENGTH_SHORT).show();
+                        etRegEmail.setText("");
+                        etRegPassword.setText("");
                         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                     }
                     else{

@@ -17,6 +17,9 @@ public class Order {
         this.clientName = clientName;
         this.clientPhone = clientPhone;
     }
+    public Order(){
+
+    }
 
     public String getProductName() {
         return productName;

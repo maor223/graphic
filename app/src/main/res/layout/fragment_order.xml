@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,17 +8,50 @@
     tools:context=".OrderFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <Button
-        android:id="@+id/btnBack"
-        android:layout_margin="10dp"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/ic_baseline_arrow_back"/>
     <TextView
+        android:layout_margin="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment"
+        android:text="בחירה מצוינת!"
         android:textSize="30sp"
         android:layout_gravity="center"/>
 
-</FrameLayout>
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="תוכלו ליצור קשר בעזרת:"
+        android:textSize="30sp" />
+    <ImageView
+        android:id="@+id/ivwhatsapp"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:background="@drawable/img"
+        android:layout_gravity="center"
+        android:layout_margin="50dp"
+        />
+    <Button
+        android:id="@+id/btnCall"
+        android:layout_margin="10dp"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:background="@drawable/custom_button"
+        android:layout_gravity="center"
+        android:text="פלאפון"
+        android:textSize="40sp"
+        />
+    <Button
+        android:id="@+id/btnConfirm"
+        android:layout_margin="80dp"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:text="אישור"
+        android:textSize="30sp"
+        android:background="@drawable/custom_button"
+        android:layout_gravity="center"
+        />
+
+</LinearLayout>
