@@ -19,13 +19,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
+                >
                 // מגבות
                 <LinearLayout
                     android:id="@+id/towels"
                     android:layout_width="150dp"
                     android:layout_height="160dp"
-                    android:layout_margin="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/towel_background"
                     android:orientation="vertical">
 
@@ -53,7 +56,8 @@
                     android:id="@+id/pillows"
                     android:layout_width="150dp"
                     android:layout_height="160dp"
-                    android:layout_margin="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/pillow_background"
                     android:orientation="vertical">
 
@@ -81,13 +85,16 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_gravity="center"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                >
                 // מחזיק מפתחות
                 <LinearLayout
                     android:id="@+id/keyChains"
                     android:layout_width="150dp"
                     android:layout_height="160dp"
-                    android:layout_margin="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/key_chain_background"
                     android:orientation="vertical">
 
@@ -115,7 +122,8 @@
                     android:id="@+id/calendar"
                     android:layout_width="150dp"
                     android:layout_height="160dp"
-                    android:layout_margin="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/calendar_background"
                     android:orientation="vertical">
 
@@ -144,13 +152,16 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_gravity="center"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                >
                 // מארזים
                 <LinearLayout
                     android:id="@+id/maarazim"
                     android:layout_width="150dp"
                     android:layout_height="160dp"
-                    android:layout_margin="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/maaraz_background"
                     android:orientation="vertical">
 
@@ -178,7 +189,8 @@
                     android:id="@+id/babies"
                     android:layout_width="150dp"
                     android:layout_height="160dp"
-                    android:layout_margin="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
                     android:background="@drawable/maaraz_background"
                     android:orientation="vertical">
 
@@ -202,35 +214,68 @@
 
                 </LinearLayout>
             </LinearLayout>
-            // עוד
+            //Linear layout of two pictures
             <LinearLayout
-                android:id="@+id/others"
-                android:layout_width="150dp"
-                android:layout_height="160dp"
-                android:layout_marginLeft="36dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/maaraz_background"
-                android:orientation="vertical">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                >
+                // עוד
+                <LinearLayout
+                    android:id="@+id/others"
+                    android:layout_width="150dp"
+                    android:layout_height="160dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/maaraz_background"
+                    android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="10dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/towel" />
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/towel" />
 
-                <TextView
-                    android:id="@+id/tvOthers"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="5dp"
-                    android:text="עוד"
-                    android:textColor="@color/black"
-                    android:textSize="25dp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tvOthers"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="5dp"
+                        android:text="עוד"
+                        android:textColor="@color/black"
+                        android:textSize="25dp"
+                        android:textStyle="bold" />
 
+                </LinearLayout>
+
+                // כריות
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="160dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="5dp"
+                        />
+
+                </LinearLayout>
             </LinearLayout>
+
 
         </LinearLayout>
 

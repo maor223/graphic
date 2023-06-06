@@ -10,22 +10,26 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.app.AlarmManager;
+import android.app.DatePickerDialog;
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.graphic.databinding.ActivityMainBinding;
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -33,7 +37,10 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class OrderForm extends AppCompatActivity implements View.OnClickListener {
     TextView tv1;
@@ -50,6 +57,9 @@ public class OrderForm extends AppCompatActivity implements View.OnClickListener
     FirebaseAuth mAuth;
 
     NotificationHelper mNotificationHelper;
+    Calendar calendar;
+    public static final String channel1ID = "channel1ID";
+    public final static String defaultNotificationChannelID = "default" ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +70,7 @@ public class OrderForm extends AppCompatActivity implements View.OnClickListener
 
         btnArrivalTime = findViewById(R.id.btnArrivalTime);
         btnArrivalTime.setOnClickListener(this);
+
         tv1 = findViewById(R.id.tv1);
         etAmount = findViewById(R.id.etAmount);
         etText = findViewById(R.id.etText);
@@ -98,7 +109,7 @@ public class OrderForm extends AppCompatActivity implements View.OnClickListener
                 }
 
                 else{
-                    Intent resultIntent = new Intent(OrderForm.this, MainActivity.class);
+                    /*Intent resultIntent = new Intent(OrderForm.this, MainActivity.class);
                     PendingIntent resultPendingIntent = PendingIntent.getActivity(this, 1, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
                     if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
@@ -118,8 +129,7 @@ public class OrderForm extends AppCompatActivity implements View.OnClickListener
                             .setContentIntent(resultPendingIntent);
 
                     NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);
-                    managerCompat.notify(1, builder.build());
-
+                    managerCompat.notify(1, builder.build());*/
 
                     Order order = new Order(tv1.getText().toString(), Integer.parseInt(etAmount.getText().toString()), etText.getText().toString()
                             , etClientName.getText().toString(), etPhoneNumber.getText().toString());
@@ -129,12 +139,63 @@ public class OrderForm extends AppCompatActivity implements View.OnClickListener
                 }
             }
         }
+        if (view==btnArrivalTime){
+            calendar = Calendar.getInstance();
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+            DatePickerDialog datePickerDialog = new DatePickerDialog(this,new SetDate(),year,month,day);
+            datePickerDialog.show();
+        }
 
 
     }
-    public void sendOnChannel1(){
-        NotificationCompat.Builder nb = mNotificationHelper.getChannel1Notification();
-        mNotificationHelper.getMAnager().notify(1, nb.build());
+    public  class SetDate implements DatePickerDialog.OnDateSetListener
+    {
+
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            String str = "You selected :" + dayOfMonth + "/" + (monthOfYear+1) +"/" + year;
+            Toast.makeText(OrderForm.this,str,Toast.LENGTH_LONG).show();
+
+            calendar.setTimeInMillis(System.currentTimeMillis());
+            calendar.clear();
+
+            calendar .set(Calendar. YEAR , year) ;
+            calendar .set(Calendar. MONTH , monthOfYear) ;
+            calendar .set(Calendar. DAY_OF_MONTH , dayOfMonth) ;
+            updateLabel() ;
+        }
+    }
+    private void updateLabel () {
+        String myFormat = "dd/MM/yy" ; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat , Locale. getDefault ()) ;
+        Date date = calendar .getTime();
+        btnArrivalTime .setText(sdf.format(date)) ;
+        scheduleNotification(getNotification( btnArrivalTime .getText().toString()) , date.getTime()) ;
+    }
+    private void scheduleNotification (Notification notification , long delay) {
+        Date currentDate = Calendar.getInstance().getTime();
+
+        Long parrentDayTime = currentDate.getTime();
+
+        Intent notificationIntent = new Intent( this, MyNotificationPublisher. class ) ;
+        notificationIntent.putExtra(MyNotificationPublisher. NOTIFICATION_ID , 1 ) ;
+        notificationIntent.putExtra(MyNotificationPublisher. NOTIFICATION , notification) ;
+        PendingIntent pendingIntent = PendingIntent. getBroadcast ( this, 0 , notificationIntent , PendingIntent. FLAG_UPDATE_CURRENT);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context. ALARM_SERVICE ) ;
+        assert alarmManager != null;
+        alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP , SystemClock.elapsedRealtime()+(delay - currentDate.getTime()), pendingIntent) ;
+    }
+
+    private Notification getNotification (String content) {
+        NotificationCompat.Builder builder = new NotificationCompat.Builder( this, defaultNotificationChannelID ) ;
+        builder.setContentTitle( "הזמנה בוצעה" ) ;
+        builder.setContentText(content) ;
+        builder.setSmallIcon(R.drawable. ic_launcher_foreground ) ;
+        builder.setAutoCancel( true ) ;
+        builder.setChannelId( channel1ID ) ;
+        return builder.build() ;
     }
 
     public void addFragment(){
@@ -147,4 +208,18 @@ public class OrderForm extends AppCompatActivity implements View.OnClickListener
             fragmentTransaction.commit();
         }
     }
+
+
+    /*private void setAlarm(long timeInMillis) {
+        Toast.makeText(this, "alarm seted", Toast.LENGTH_SHORT);
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlarmReceiver.class); // Create a broadcast receiver to handle the alarm
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+        alarmManager.set(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent);
+    }*/
+    /*public void sendOnChannel1(){
+        NotificationCompat.Builder nb = mNotificationHelper.getChannel1Notification();
+        mNotificationHelper.getMAnager().notify(1, nb.build());
+    }*/
+
 }
