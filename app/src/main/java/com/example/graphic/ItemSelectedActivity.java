@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,7 +16,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ItemSelectedActivity extends AppCompatActivity implements View.OnClickListener {
-    TextView tv1;
+    TextView tv1, tvPrice;
     ImageView iv1;
     Button btnOrder;
     Bundle bundle;
@@ -33,6 +32,7 @@ public class ItemSelectedActivity extends AppCompatActivity implements View.OnCl
         btnOrder.setOnClickListener(this);
         tv1 = findViewById(R.id.tv1);
         iv1 = findViewById(R.id.iv1);
+        tvPrice = findViewById(R.id.tvPrice);
 
         bundle = getIntent().getExtras();
         if (bundle != null) {
@@ -62,18 +62,22 @@ public class ItemSelectedActivity extends AppCompatActivity implements View.OnCl
     public void ProductTowel(String productName){
         if (productName.equals("מגבת גוף מיקרופייבר")){
             tv1.setText(productName);
+            tvPrice.setText("65 שקלים");
             iv1.setImageResource(R.drawable.micro_body_towel_1);
         }
         if (productName.equals("מגבת תינוק קטנה")){
             tv1.setText(productName);
+            tvPrice.setText("12 שקלים");
             iv1.setImageResource(R.drawable.bear_towel);
         }
         if (productName.equals("מגבת ידיים")){
             tv1.setText(productName);
+            tvPrice.setText("35 שקלים");
             iv1.setImageResource(R.drawable.hand_towel_1);
         }
         if (productName.equals("מגבת גוף")){
             tv1.setText(productName);
+            tvPrice.setText("65 שקלים");
             iv1.setImageResource(R.drawable.body_towel);
         }
     }
@@ -81,18 +85,22 @@ public class ItemSelectedActivity extends AppCompatActivity implements View.OnCl
     public void ProductPillow(String productName){
         if (productName.equals("כרית עם הדפס")){
             tv1.setText(productName);
+            tvPrice.setText("65 שקלים");
             iv1.setImageResource(R.drawable.patterned_pillow);
         }
         if (productName.equals("ציפה לכרית שינה")){
             tv1.setText(productName);
+            tvPrice.setText("40 שקלים");
             iv1.setImageResource(R.drawable.pillow_cover_1);
         }
         if (productName.equals("כרית לב")){
             tv1.setText(productName);
+            tvPrice.setText("60 שקלים");
             iv1.setImageResource(R.drawable.pillow_with_hands);
         }
         if (productName.equals("כרית תאריך לידה")){
             tv1.setText(productName);
+            tvPrice.setText("80 שקלים");
             iv1.setImageResource(R.drawable.birth_pillow);
         }
     }
@@ -100,14 +108,17 @@ public class ItemSelectedActivity extends AppCompatActivity implements View.OnCl
     public void ProductKeyChain(String productName){
         if (productName.equals("מחזיק מפתחות דובי")){
             tv1.setText(productName);
+            tvPrice.setText("30 שקלים");
             iv1.setImageResource(R.drawable.bear_key_chain);
         }
         if (productName.equals("מחזיק מפתחות מעץ בית")){
             tv1.setText(productName);
+            tvPrice.setText("25 שקלים");
             iv1.setImageResource(R.drawable.house_key_chain);
         }
         if (productName.equals("מחזיק מפתחות מעץ ריבוע")){
             tv1.setText(productName);
+            tvPrice.setText("25 שקלים");
             iv1.setImageResource(R.drawable.square_key_chain);
         }
     }
@@ -115,33 +126,40 @@ public class ItemSelectedActivity extends AppCompatActivity implements View.OnCl
     public void ProductCalender(String productName){
         if (productName.equals("לוח שנה על בלוק")){
             tv1.setText(productName);
+            tvPrice.setText("י60 שקלים");
             iv1.setImageResource(R.drawable.block_calendar);
         }
         if (productName.equals("לוח שנה קטן מגנט")){
             tv1.setText(productName);
+            tvPrice.setText("40 שקלים");
             iv1.setImageResource(R.drawable.mini_calendar);
         }
         if (productName.equals("לוח שנה לועזי כולל מגנט עליון")){
             tv1.setText(productName);
-            iv1.setImageResource(R.drawable.calendar);
+            tvPrice.setText("60 שקלים");
+            iv1.setImageResource(R.drawable.calendar_picture);
         }
     }
     //מארזים
     public void ProductMaarazim(String productName){
         if (productName.equals("מארז לפסח")){
             tv1.setText(productName);
+            tvPrice.setText("70");
             iv1.setImageResource(R.drawable.pesach);
         }
         if (productName.equals("מארז למנגליסט")){
             tv1.setText(productName);
+            tvPrice.setText("70");
             iv1.setImageResource(R.drawable.mangal);
         }
         if (productName.equals("מארז לתינוק")){
             tv1.setText(productName);
+            tvPrice.setText("70");
             iv1.setImageResource(R.drawable.maaraz1);
         }
         if (productName.equals("מארז לאמא/אבא")){
             tv1.setText(productName);
+            tvPrice.setText("70");
             iv1.setImageResource(R.drawable.maaraz2);
         }
     }
@@ -149,14 +167,17 @@ public class ItemSelectedActivity extends AppCompatActivity implements View.OnCl
     public void ProductBabies(String productName){
         if (productName.equals("סינר תינוק")){
             tv1.setText(productName);
+            tvPrice.setText("25 שקלים");
             iv1.setImageResource(R.drawable.baby_apron);
         }
         if (productName.equals("בגד גוף תינוק ללא רגלית")){
             tv1.setText(productName);
+            tvPrice.setText("45 שקלים");
             iv1.setImageResource(R.drawable.baby_bodysuit);
         }
         if (productName.equals("חיתולי בד עם הטבעת שם")){
             tv1.setText(productName);
+            tvPrice.setText("60 שקלים");
             iv1.setImageResource(R.drawable.cloth_diaperes);
         }
     }
@@ -164,18 +185,22 @@ public class ItemSelectedActivity extends AppCompatActivity implements View.OnCl
     public void ProductOthers(String productName){
         if (productName.equals("חולצת דרייפיט עם הדפס")){
             tv1.setText(productName);
+            tvPrice.setText("50 שקלים");
             iv1.setImageResource(R.drawable.shirt);
         }
         if (productName.equals("ספל במיתוג אישי")){
             tv1.setText(productName);
+            tvPrice.setText("50 שקלים");
             iv1.setImageResource(R.drawable.cup);
         }
         if (productName.equals("בלוק עץ אורן עם תמונה")){
             tv1.setText(productName);
+            tvPrice.setText("25 שקלים");
             iv1.setImageResource(R.drawable.block);
         }
         if (productName.equals("קרש חיתוך צריבה מעוצבת")){
             tv1.setText(productName);
+            tvPrice.setText("65 שקלים");
             iv1.setImageResource(R.drawable.cutting_board);
         }
     }
@@ -204,6 +229,7 @@ public class ItemSelectedActivity extends AppCompatActivity implements View.OnCl
         else{
             Intent intent = new Intent(ItemSelectedActivity.this, OrderForm.class);
             intent.putExtra("productName", tv1.getText().toString());
+            intent.putExtra("Price", tvPrice.getText().toString());
             startActivity(intent);
         }
     }

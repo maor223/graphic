@@ -109,7 +109,7 @@ public class CategoryActivity extends AppCompatActivity implements View.OnClickL
         tv1.setText("לוח שנה על בלוק");
         iv2.setImageResource(R.drawable.mini_calendar);
         tv2.setText("לוח שנה קטן מגנט");
-        iv3.setImageResource(R.drawable.calendar);
+        iv3.setImageResource(R.drawable.calendar_picture);
         tv3.setText("לוח שנה לועזי כולל מגנט עליון");
     }
     public void Maarazim(){

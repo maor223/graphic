@@ -43,11 +43,11 @@ import java.util.Date;
 import java.util.Locale;
 
 public class OrderForm extends AppCompatActivity implements View.OnClickListener {
-    TextView tv1;
+    TextView tv1, tvProductPrice;
     EditText etAmount, etText, etClientName, etPhoneNumber;
     Button btnConfirmOrder;
     Bundle bundle;
-    String productName;
+    String productName, productPrice;
     Button btnArrivalTime;
 
     FrameLayout frameLayout;
@@ -56,7 +56,6 @@ public class OrderForm extends AppCompatActivity implements View.OnClickListener
 
     FirebaseAuth mAuth;
 
-    NotificationHelper mNotificationHelper;
     Calendar calendar;
     public static final String channel1ID = "channel1ID";
     public final static String defaultNotificationChannelID = "default" ;
@@ -72,6 +71,7 @@ public class OrderForm extends AppCompatActivity implements View.OnClickListener
         btnArrivalTime.setOnClickListener(this);
 
         tv1 = findViewById(R.id.tv1);
+        tvProductPrice = findViewById(R.id.tvProductPrice);
         etAmount = findViewById(R.id.etAmount);
         etText = findViewById(R.id.etText);
         etClientName = findViewById(R.id.etClientName);
@@ -82,8 +82,10 @@ public class OrderForm extends AppCompatActivity implements View.OnClickListener
         mAuth = FirebaseAuth.getInstance();
 
         bundle = getIntent().getExtras();
+        productPrice = bundle.getString("Price");
         productName = bundle.getString("productName");
         tv1.setText(productName);
+        tvProductPrice.setText(productPrice);
 
     }
 
@@ -172,7 +174,7 @@ public class OrderForm extends AppCompatActivity implements View.OnClickListener
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat , Locale. getDefault ()) ;
         Date date = calendar .getTime();
         btnArrivalTime .setText(sdf.format(date)) ;
-        scheduleNotification(getNotification( btnArrivalTime .getText().toString()) , date.getTime()) ;
+        scheduleNotification(getNotification() , date.getTime()) ;
     }
     private void scheduleNotification (Notification notification , long delay) {
         Date currentDate = Calendar.getInstance().getTime();
@@ -188,11 +190,16 @@ public class OrderForm extends AppCompatActivity implements View.OnClickListener
         alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP , SystemClock.elapsedRealtime()+(delay - currentDate.getTime()), pendingIntent) ;
     }
 
-    private Notification getNotification (String content) {
+    private Notification getNotification () {
+        Intent resultIntent = new Intent(OrderForm.this, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
         NotificationCompat.Builder builder = new NotificationCompat.Builder( this, defaultNotificationChannelID ) ;
         builder.setContentTitle( "הזמנה בוצעה" ) ;
-        builder.setContentText(content) ;
+        builder.setContentText("לא לשכוח ליצור קשר על מנת להגיע לאסוף את המוצר") ;
         builder.setSmallIcon(R.drawable. ic_launcher_foreground ) ;
+        builder.setContentIntent(pendingIntent);
         builder.setAutoCancel( true ) ;
         builder.setChannelId( channel1ID ) ;
         return builder.build() ;
@@ -209,17 +216,5 @@ public class OrderForm extends AppCompatActivity implements View.OnClickListener
         }
     }
 
-
-    /*private void setAlarm(long timeInMillis) {
-        Toast.makeText(this, "alarm seted", Toast.LENGTH_SHORT);
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(this, AlarmReceiver.class); // Create a broadcast receiver to handle the alarm
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
-        alarmManager.set(AlarmManager.RTC_WAKEUP, timeInMillis, pendingIntent);
-    }*/
-    /*public void sendOnChannel1(){
-        NotificationCompat.Builder nb = mNotificationHelper.getChannel1Notification();
-        mNotificationHelper.getMAnager().notify(1, nb.build());
-    }*/
 
 }

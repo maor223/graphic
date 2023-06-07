@@ -17,9 +17,6 @@
         </menu>
     </item>
     <item
-        android:id="@+id/order"
-        android:title="הזמנות"/>
-    <item
         android:id="@+id/logout"
         android:title="התנתקות"/>
 

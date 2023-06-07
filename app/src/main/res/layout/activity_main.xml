@@ -103,7 +103,7 @@
                         android:layout_height="100dp"
                         android:layout_margin="10dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/towel" />
+                        android:background="@drawable/motivation" />
 
                     <TextView
                         android:id="@+id/tvkeyChain"
@@ -132,7 +132,7 @@
                         android:layout_height="100dp"
                         android:layout_margin="10dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/towel" />
+                        android:background="@drawable/calendar" />
 
                     <TextView
                         android:id="@+id/tvCalendar"
@@ -170,7 +170,7 @@
                         android:layout_height="100dp"
                         android:layout_margin="10dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/towel" />
+                        android:background="@drawable/dream" />
 
                     <TextView
                         android:id="@+id/tvMaarazim"
@@ -191,7 +191,7 @@
                     android:layout_height="160dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/maaraz_background"
+                    android:background="@drawable/babys_background"
                     android:orientation="vertical">
 
                     <ImageView
@@ -199,7 +199,7 @@
                         android:layout_height="100dp"
                         android:layout_margin="10dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/towel" />
+                        android:background="@drawable/baby_bed" />
 
                     <TextView
                         android:id="@+id/tvBabies"
@@ -228,7 +228,7 @@
                     android:layout_height="160dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/maaraz_background"
+                    android:background="@drawable/more_background"
                     android:orientation="vertical">
 
                     <ImageView
@@ -236,7 +236,7 @@
                         android:layout_height="100dp"
                         android:layout_margin="10dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/towel" />
+                        android:background="@drawable/ic_baseline_plus" />
 
                     <TextView
                         android:id="@+id/tvOthers"
@@ -251,7 +251,6 @@
 
                 </LinearLayout>
 
-                // כריות
                 <LinearLayout
                     android:layout_width="150dp"
                     android:layout_height="160dp"

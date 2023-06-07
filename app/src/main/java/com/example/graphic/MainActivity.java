@@ -117,17 +117,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onOptionsItemSelected(item);
         int id = item.getItemId();
         if (id == R.id.maps) {
-            Intent intent = new Intent(Intent.ACTION_VIEW);
+            /*Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(adress));
             Intent chooser = Intent.createChooser(intent, "Launch Map");
-            startActivity(chooser);
+            startActivity(chooser);*/
+            Double latitude = 32.165696;
+            Double longitude = 35.085912;
+            openLocation(latitude, longitude);
         } else if (id == R.id.phone) {
             checkPhoneCall();
         } else if (id == R.id.sms) {
             openWhatsApp();
-        } else if (id==R.id.order){
-            startActivity (new Intent(MainActivity.this, AllOrders.class));
-        }else if (id == R.id.login) {
+        }
+        else if (id == R.id.login) {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
         } else if (id == R.id.logout) {
             mAuth.signOut();
@@ -231,5 +233,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         catch (Exception e){
             e.printStackTrace();
         }
+    }
+    public void openLocation(Double latitude,Double longitude) {
+
+        // Open Google Maps with the provided latitude and longitude
+        Uri gmmIntentUri = Uri.parse("geo:" + latitude + "," + longitude);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        if (mapIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(mapIntent);
+        } else {
+            Toast.makeText(MainActivity.this, "Google Maps is not installed.", Toast.LENGTH_SHORT).show();
+        }
+        /*String uri = "geo:" + latitude + "," + longitude;
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+        intent.setPackage("com.google.android.apps.maps");
+
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        } else {
+            Toast.makeText(MainActivity.this, "Google Maps is not installed.", Toast.LENGTH_SHORT).show();
+        }*/
     }
 }

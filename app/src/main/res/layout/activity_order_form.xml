@@ -5,19 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#ECFAE3"
     tools:context=".OrderForm">
   <FrameLayout
       android:id="@+id/frameLayout"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:visibility="gone"/>
-  <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_gravity="center"
-      android:text="המוצרים מוכנים אחרי שלושה ימי עסקים מרגע ההזמנה"
-      android:textSize="17dp"/>
-
   <ScrollView
       android:layout_width="match_parent"
       android:layout_height="match_parent">
@@ -55,11 +49,42 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
             android:layout_gravity=""
             android:text="כמות:"
-            android:textSize="40dp"/>
+            android:textSize="40dp"
+            android:textStyle="italic"
+            />
 
       </LinearLayout>
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="30dp"
+          android:layout_gravity="end"
+          android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tvProductPrice"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:layout_gravity="center"
+            android:layout_marginRight="20dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity=""
+            android:text="מחיר:"
+            android:textSize="40dp"
+            android:textStyle="italic"
+            />
+
+      </LinearLayout>
+
       <LinearLayout
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
@@ -73,15 +98,18 @@
             android:textSize="30sp"
             android:text=""
             android:hint="afargaerge"
-            android:textColorHint="@color/white"
+            android:textColorHint="#ECFAE3"
             android:textStyle="bold"
             />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:layout_marginRight="10dp"
             android:text="מלל:"
-            android:textSize="40dp"/>
+            android:textSize="40dp"
+            android:textStyle="italic"
+            />
 
       </LinearLayout>
       <EditText
@@ -107,11 +135,21 @@
           android:layout_marginTop="30dp"
           android:inputType="number"
           />
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center"
+          android:text="בחר תאריך שבו תרצה שהמוצר יהיה מוכן"
+          android:textSize="30sp"
+          android:layout_marginRight="7dp"
+          android:layout_marginTop="20dp"
+          android:textStyle="italic"
+          />
       <Button
           android:id="@+id/btnArrivalTime"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:text="שעת הגעה"
+          android:text="בחר תאריך"
           android:textSize="35sp"
           android:background="@drawable/custom_button"
           android:layout_gravity="center"
@@ -124,7 +162,9 @@
           android:textSize="40sp"
           android:background="@drawable/custom_button"
           android:layout_gravity="center"
-          android:layout_marginTop="20dp"/>
+          android:layout_marginTop="20dp"
+          android:layout_marginBottom="10dp"
+          />
     </LinearLayout>
   </ScrollView>
 
