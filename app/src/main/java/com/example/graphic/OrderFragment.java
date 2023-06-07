@@ -55,7 +55,7 @@ public class OrderFragment extends Fragment implements View.OnClickListener {
     }
     public void openWhatsApp(){
         try {
-            String text = "היי הייתי רוצה לקבל פרטים נוספים לגבי המוצר שהזמנתי";// the message.
+            String text = "היי רחל. הייתי רוצה לקבל פרטים נוספים לגבי המוצר שהזמנתי";// the message.
 
             String toNumber = "972545561643"; // Replace with mobile phone number without +Sign or leading zeros, but with country code
             //Suppose your country is India and your phone number is “xxxxxxxxxx”, then you need to send “91xxxxxxxxxx”.

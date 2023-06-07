@@ -22,7 +22,6 @@ public class LoginActivity extends AppCompatActivity {
     EditText etLoginEmail, etLoginPassword;
     TextView tvRegisterHere;
     Button btnLogin, btnLaterLogin;
-    String ManagerEmail = "vvv@vvv.vvv";
 
     FirebaseAuth mAuth;
 
@@ -62,11 +61,6 @@ public class LoginActivity extends AppCompatActivity {
         else if(TextUtils.isEmpty(password)){
             etLoginPassword.setError("שדה זה לא יכול להיות ריק");
             etLoginPassword.requestFocus();
-        }
-        else if (etLoginEmail.getText().toString().equals(ManagerEmail)){
-            etLoginEmail.setText("");
-            etLoginPassword.setText("");
-            startActivity(new Intent(LoginActivity.this, AllOrders.class));
         }
         else{
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {

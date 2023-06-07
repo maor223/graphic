@@ -67,7 +67,7 @@ public class RegisterActivity extends AppCompatActivity {
                         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                     }
                     else{
-                        Toast.makeText(RegisterActivity.this, "הרשמה נכשלה", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "משתמש כבר רשום", Toast.LENGTH_SHORT).show();
                     }
                 }
             });

@@ -41,10 +41,8 @@ import java.net.URI;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     LinearLayout Ltowels, Lpillows, Lkeychain, Lcalender, Lmaaraz, Lbaby, Lother;
     private static final int REQUEST_CALL = 1;
-    final String adress = "geo:32.165567,35.085866";
     int count = 0;
     FirebaseAuth mAuth;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,12 +115,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onOptionsItemSelected(item);
         int id = item.getItemId();
         if (id == R.id.maps) {
-            /*Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse(adress));
-            Intent chooser = Intent.createChooser(intent, "Launch Map");
-            startActivity(chooser);*/
-            Double latitude = 32.165696;
-            Double longitude = 35.085912;
+            Double latitude = 32.165593;
+            Double longitude = 35.085868;
             openLocation(latitude, longitude);
         } else if (id == R.id.phone) {
             checkPhoneCall();
@@ -220,7 +214,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //opening whatsapp
     public void openWhatsApp(){
         try {
-            String text = "היי הייתי רוצה לקבל פרטים נוספים לגבי המוצר שהזמנתי";// Replace with your message.
+            String text = "היי רחל, הייתי רוצה לדעת פרטים נוספים לגבי העסק";// Replace with your message.
 
             String toNumber = "972545561643"; // Replace with mobile phone number without +Sign or leading zeros, but with country code
             //Suppose your country is India and your phone number is “xxxxxxxxxx”, then you need to send “91xxxxxxxxxx”.
@@ -234,25 +228,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             e.printStackTrace();
         }
     }
-    public void openLocation(Double latitude,Double longitude) {
-
-        // Open Google Maps with the provided latitude and longitude
-        Uri gmmIntentUri = Uri.parse("geo:" + latitude + "," + longitude);
-        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-        mapIntent.setPackage("com.google.android.apps.maps");
-        if (mapIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(mapIntent);
-        } else {
-            Toast.makeText(MainActivity.this, "Google Maps is not installed.", Toast.LENGTH_SHORT).show();
-        }
-        /*String uri = "geo:" + latitude + "," + longitude;
+    private void openLocation(double latitude, double longitude) {
+        String uri = "geo:" + latitude + "," + longitude + "?q=" + latitude + "," + longitude;
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-        intent.setPackage("com.google.android.apps.maps");
-
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivity(intent);
-        } else {
-            Toast.makeText(MainActivity.this, "Google Maps is not installed.", Toast.LENGTH_SHORT).show();
-        }*/
-    }
-}
+        startActivity(intent);
+    }}

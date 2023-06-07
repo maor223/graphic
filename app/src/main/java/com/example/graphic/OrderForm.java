@@ -111,28 +111,6 @@ public class OrderForm extends AppCompatActivity implements View.OnClickListener
                 }
 
                 else{
-                    /*Intent resultIntent = new Intent(OrderForm.this, MainActivity.class);
-                    PendingIntent resultPendingIntent = PendingIntent.getActivity(this, 1, resultIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
-                        NotificationChannel channel = new NotificationChannel("myCh", "My Channel", NotificationManager.IMPORTANCE_DEFAULT);
-
-                        NotificationManager manager = getSystemService(NotificationManager.class);
-                        manager.createNotificationChannel(channel);
-                    }
-
-                    NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "myCh")
-                            .setSmallIcon(R.drawable.icon)
-                            .setContentTitle("הזמנה בוצעה")
-                            .setContentText("תוכלו ליצור קשר בעזרת הודעת וואצאפ או בעזרת חיוג")
-                            .setAutoCancel(true)
-                            .setColor(Color.parseColor("" +
-                                    "#FF9800"))
-                            .setContentIntent(resultPendingIntent);
-
-                    NotificationManagerCompat managerCompat = NotificationManagerCompat.from(this);
-                    managerCompat.notify(1, builder.build());*/
-
                     Order order = new Order(tv1.getText().toString(), Integer.parseInt(etAmount.getText().toString()), etText.getText().toString()
                             , etClientName.getText().toString(), etPhoneNumber.getText().toString());
 
