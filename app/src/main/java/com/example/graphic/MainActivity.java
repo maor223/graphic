@@ -41,7 +41,9 @@ import java.net.URI;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     LinearLayout Ltowels, Lpillows, Lkeychain, Lcalender, Lmaaraz, Lbaby, Lother;
     private static final int REQUEST_CALL = 1;
+    private static final int REQUEST_MAP = 2;
     int count = 0;
+    int count2 = 0;
     FirebaseAuth mAuth;
 
     @Override
@@ -115,11 +117,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onOptionsItemSelected(item);
         int id = item.getItemId();
         if (id == R.id.maps) {
-            Double latitude = 32.165593;
-            Double longitude = 35.085868;
-            openLocation(latitude, longitude);
+            checkPermissions(REQUEST_MAP);
         } else if (id == R.id.phone) {
-            checkPhoneCall();
+            checkPermissions(REQUEST_CALL);
         } else if (id == R.id.sms) {
             openWhatsApp();
         }
@@ -133,27 +133,53 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     //checking if permission confirmed
-    public void checkPhoneCall() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-            if (count == 0) {
-                count++;
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
-            } else {
-                if (count == 1)
-                    showPermissionExplenation(REQUEST_CALL);
-                else {
-                    Toast.makeText(this, "אין לך הרשאה", Toast.LENGTH_SHORT);
-                }
+    public void checkPermissions(final int permission) {
+        //checking call permission
+        if (permission==REQUEST_CALL){
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                if (count == 0) {
+                    count++;
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+                } else {
+                    if (count == 1)
+                        showPermissionExplenation(REQUEST_CALL);
+                    else {
+                        Toast.makeText(this, "אין לך הרשאה", Toast.LENGTH_SHORT);
+                    }
 
+                }
+            }
+            // calling to the phoneNumber if their is permission
+            else {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_CALL);
+                Uri data = Uri.parse("tel:" + "52-11101111");
+                intent.setData(data);
+                startActivity(intent);
             }
         }
-        // calling to the phoneNumber if their is permission
-        else {
-            Intent intent = new Intent();
-            intent.setAction(Intent.ACTION_CALL);
-            Uri data = Uri.parse("tel:" + "52-11101111");
-            intent.setData(data);
-            startActivity(intent);
+        //checking maps permission
+        else if (permission==REQUEST_MAP){
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!=PackageManager.PERMISSION_GRANTED){
+                if (count2 == 0) {
+                    count2++;
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_MAP);
+                } else {
+                    if (count2 == 1)
+                        showPermissionExplenation(REQUEST_MAP);
+                    else {
+                        Toast.makeText(this, "אין לך הרשאה", Toast.LENGTH_SHORT);
+                    }
+
+                }
+            }
+            //opening maps
+            else {
+                Double latitude = 32.165546;
+                Double longitude = 35.085862;
+                openLocation(latitude, longitude);
+            }
+
         }
 
     }
@@ -162,22 +188,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void showPermissionExplenation(final int permission) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         if (permission == REQUEST_CALL) {
-            builder.setTitle("הרשאת פלאפון");
-            builder.setMessage("אנא אשר הרשאה דרל הגדרות האפליקציה");
+            builder.setTitle("אפליקציה זו צריכה הרשאה לפלאפון");
+            builder.setMessage("אנא אשר הרשאה זו דרך הגדרות האפליקציה כדי להשתמש בפעולה הרצויה");
+        }
+        else if (permission==REQUEST_MAP){
+            builder.setTitle("אפליקציה זו צריכה הרשאת מפות");
+            builder.setMessage("אנא אשר הרשאה זו דרך הגדרות האפליקציה כדי להשתמש בפעולה הרצויה");
         }
         builder.setPositiveButton("אשר", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (permission == REQUEST_CALL) {
                     count = 5;
-                    settingsPermission();
+                    settingsPermission(permission);
+                }
+                else if (permission==REQUEST_MAP){
+                    count2 = 5;
+                    settingsPermission(permission);
                 }
             }
         });
         builder.setNegativeButton("מסרב", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                count = 1;
+                if (permission==REQUEST_CALL)
+                    count = 1;
+                else if (permission==REQUEST_MAP)
+                    count2 = 1;
                 dialogInterface.dismiss();
             }
         });
@@ -187,22 +224,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     //go to setting applications
-    public int settingsPermission() {
+    public void settingsPermission(final int permission) {
         Intent intent = new Intent();
         intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
         Uri uri = Uri.fromParts("package", this.getPackageName(), null);
         intent.setData(uri);
         this.startActivity(intent);
-        checkPhoneCall();
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED)
-            return count = 1;
-        return count = 0;
+        if (permission==REQUEST_CALL){
+
+            checkPermissions(REQUEST_CALL);
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED)
+                count = 1;
+            else
+                count = 0;
+        }
+        if (permission==REQUEST_MAP){
+
+            checkPermissions(REQUEST_MAP);
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
+                count2 = 1;
+            else
+                count2 = 0;
+        }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_CALL) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+            } else {
+                Toast.makeText(this, "גישה נדחתה", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+        if (requestCode == REQUEST_MAP) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
             } else {
