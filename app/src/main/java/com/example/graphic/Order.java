@@ -6,13 +6,15 @@ public class Order {
 
     private String productName;
     private int amount;
+    private int price;
     private String text;
     private String clientName;
     private String clientPhone;
 
-    public Order(String productName, int amount, String text, String clientName, String clientPhone) {
+    public Order(String productName, int amount,int price, String text, String clientName, String clientPhone) {
         this.productName = productName;
         this.amount = amount;
+        this.price = price;
         this.text = text;
         this.clientName = clientName;
         this.clientPhone = clientPhone;
@@ -36,6 +38,15 @@ public class Order {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
 
     public String getText() {
         return text;

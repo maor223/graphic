@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int count = 0;
     int count2 = 0;
     FirebaseAuth mAuth;
+    final String managerEmail = "vvv@vvv.vvv";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,7 +106,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreateOptionsMenu(menu);
         if (mAuth.getCurrentUser() == null) {
             getMenuInflater().inflate(R.menu.login_menu, menu);
-        } else {
+        }else if(mAuth.getCurrentUser().getEmail().equals(managerEmail)){
+            getMenuInflater().inflate(R.menu.manager_menu, menu);
+        }
+        else {
             getMenuInflater().inflate(R.menu.menu, menu);
         }
 
@@ -128,6 +132,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (id == R.id.logout) {
             mAuth.signOut();
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
+        }
+        else if (id == R.id.orders) {
+            startActivity(new Intent(MainActivity.this, AllOrders.class));
         }
         return true;
     }
@@ -271,7 +278,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //opening whatsapp
     public void openWhatsApp(){
         try {
-            String text = "היי רחל, הייתי רוצה לדעת פרטים נוספים לגבי העסק";// Replace with your message.
+            String text = "היי רחל, הייתי רוצה לקבל פרטים נוספים לגבי העסק";// Replace with your message.
 
             String toNumber = "972545561643"; // Replace with mobile phone number without +Sign or leading zeros, but with country code
             //Suppose your country is India and your phone number is “xxxxxxxxxx”, then you need to send “91xxxxxxxxxx”.
@@ -289,4 +296,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String uri = "geo:" + latitude + "," + longitude + "?q=" + latitude + "," + longitude;
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
         startActivity(intent);
-    }}
+    }
+}

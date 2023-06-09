@@ -21,7 +21,9 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -42,7 +44,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class OrderForm extends AppCompatActivity implements View.OnClickListener {
+public class OrderForm extends AppCompatActivity implements View.OnClickListener, TextWatcher {
     TextView tv1, tvProductPrice;
     EditText etAmount, etText, etClientName, etPhoneNumber;
     Button btnConfirmOrder;
@@ -73,6 +75,8 @@ public class OrderForm extends AppCompatActivity implements View.OnClickListener
         tv1 = findViewById(R.id.tv1);
         tvProductPrice = findViewById(R.id.tvProductPrice);
         etAmount = findViewById(R.id.etAmount);
+        etAmount.addTextChangedListener(this);
+
         etText = findViewById(R.id.etText);
         etClientName = findViewById(R.id.etClientName);
         etPhoneNumber = findViewById(R.id.etPhoneNumber);
@@ -98,7 +102,6 @@ public class OrderForm extends AppCompatActivity implements View.OnClickListener
     @Override
     public void onClick(View view) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("orders/"+mAuth.getCurrentUser().getUid());
         if (view==btnConfirmOrder){
             if(mAuth.getCurrentUser()!=null){
                 if (TextUtils.isEmpty(etClientName.getText().toString())&&TextUtils.isEmpty(etPhoneNumber.getText().toString())){
@@ -111,7 +114,8 @@ public class OrderForm extends AppCompatActivity implements View.OnClickListener
                 }
 
                 else{
-                    Order order = new Order(tv1.getText().toString(), Integer.parseInt(etAmount.getText().toString()), etText.getText().toString()
+                    DatabaseReference myRef = database.getReference("orders/"+mAuth.getCurrentUser().getUid());
+                    Order order = new Order(tv1.getText().toString(), Integer.parseInt(etAmount.getText().toString()), Integer.parseInt(productPrice),etText.getText().toString()
                             , etClientName.getText().toString(), etPhoneNumber.getText().toString());
 
                     myRef.setValue(order);
@@ -130,6 +134,29 @@ public class OrderForm extends AppCompatActivity implements View.OnClickListener
 
 
     }
+
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+        if (!etAmount.getText().toString().equals("")) {
+            tvProductPrice.setText(Integer.parseInt(productPrice) * Integer.parseInt(etAmount.getText().toString()) + "");
+            productPrice = Integer.parseInt(productPrice) * Integer.parseInt(etAmount.getText().toString())+ "";
+        }
+        else {
+            tvProductPrice.setText(productPrice);
+            productPrice = tvProductPrice.getText().toString();
+        }
+    }
+
     public  class SetDate implements DatePickerDialog.OnDateSetListener
     {
 

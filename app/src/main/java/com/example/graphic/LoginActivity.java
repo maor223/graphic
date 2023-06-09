@@ -73,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                     }
                     else{
-                        Toast.makeText(LoginActivity.this, "משתמש לא רשום", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "משתמש לא רשום, יש להרשם", Toast.LENGTH_SHORT).show();
 
                     }
                 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="16dp">
 
     <LinearLayout
@@ -24,7 +24,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="שם הזמנה:"
+                android:text="שם הזמנה: "
                 android:textSize="24dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -45,12 +45,34 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="כמות:"
+                android:text="כמות: "
                 android:textSize="24dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 />
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="end">
+            <TextView
+                android:id="@+id/tvRecyclerPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="תשלום: "
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,7 +88,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="מלל:"
+                android:text="מלל: "
                 android:textSize="24dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -87,7 +109,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="שם לקוח:"
+                android:text="שם לקוח: "
                 android:textSize="24dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -108,7 +130,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="מספר פלאפון:"
+                android:text="מספר פלאפון: "
                 android:textSize="24dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"

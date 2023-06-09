@@ -31,7 +31,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
         Order currentOrder = orders.get(position);
         holder.tvProductname.setText(currentOrder.getProductName());
-        holder.tvAmount.setText(currentOrder.getAmount());
+        holder.tvAmount.setText(currentOrder.getAmount()+"");
+        holder.tvPrice.setText(currentOrder.getPrice()+"");
         holder.tvText.setText(currentOrder.getText());
         holder.tvClientName.setText(currentOrder.getClientName());
         holder.tvClientPhone.setText(currentOrder.getClientPhone());
@@ -46,6 +47,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
 
         public TextView tvProductname;
         public TextView tvAmount;
+        public TextView tvPrice;
         public TextView tvText;
         public TextView tvClientName;
         public TextView tvClientPhone;
@@ -56,6 +58,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
 
             tvProductname = itemView.findViewById(R.id.tvProductName);
             tvAmount = itemView.findViewById(R.id.tvAmount);
+            tvPrice = itemView.findViewById(R.id.tvRecyclerPrice);
             tvText = itemView.findViewById(R.id.tvText);
             tvClientName = itemView.findViewById(R.id.tvClientName);
             tvClientPhone = itemView.findViewById(R.id.tvPhone);

@@ -15,7 +15,8 @@
         android:textStyle="bold"
         android:layout_gravity="center"
         android:textColor="@color/black"
-        android:text=""/>
+        android:layout_margin="10dp"
+         android:text=""/>
 
     <ScrollView
         android:layout_width="match_parent"

@@ -214,13 +214,6 @@
 
                 </LinearLayout>
             </LinearLayout>
-            //Linear layout of two pictures
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="horizontal"
-                >
                 // עוד
                 <LinearLayout
                     android:id="@+id/others"
@@ -229,6 +222,8 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/more_background"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
                     android:orientation="vertical">
 
                     <ImageView
@@ -236,7 +231,7 @@
                         android:layout_height="100dp"
                         android:layout_margin="10dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/ic_baseline_plus" />
+                        android:background="@drawable/new_product" />
 
                     <TextView
                         android:id="@+id/tvOthers"
@@ -244,37 +239,12 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginBottom="5dp"
-                        android:text="עוד"
+                        android:text="מוצרים נוספים"
                         android:textColor="@color/black"
-                        android:textSize="25dp"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="150dp"
-                    android:layout_height="160dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="20dp"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_margin="10dp"
-                        android:layout_gravity="center"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="5dp"
-                        />
-
-                </LinearLayout>
-            </LinearLayout>
-
 
         </LinearLayout>
 

@@ -11,10 +11,12 @@
         android:id="@+id/tv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="50sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         android:layout_gravity="center"
+        android:gravity="center"
         android:textColor="@color/black"
+        android:layout_marginTop="10dp"
         android:text=""/>
 
     <ImageView
@@ -30,17 +32,25 @@
         android:layout_margin="20dp"
         android:layout_height="60dp">
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="10dp"
+            android:text="שקלים"
+            android:textSize="25dp"
+            />
+        <TextView
             android:id="@+id/tvPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="5dp"
-            android:text="cdssa"
+            android:text=""
             android:textSize="25dp"
             android:layout_marginRight="20dp"
              />
         <TextView
-            android:id="@+id/tvTowels"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

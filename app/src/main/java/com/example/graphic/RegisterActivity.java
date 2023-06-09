@@ -64,7 +64,7 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(RegisterActivity.this, "הרשמה בוצעה בהצלחה", Toast.LENGTH_SHORT).show();
                         etRegEmail.setText("");
                         etRegPassword.setText("");
-                        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
                     }
                     else{
                         Toast.makeText(RegisterActivity.this, "משתמש כבר רשום", Toast.LENGTH_SHORT).show();

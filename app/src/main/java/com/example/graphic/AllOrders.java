@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,28 +23,34 @@ import java.util.ArrayList;
 
 public class AllOrders extends AppCompatActivity {
 
+    RecyclerView recyclerView;
+    DatabaseReference myRef;
+    OrderAdapter orderAdapter;
+    ArrayList<Order> orders;
+    FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_orders);
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        mAuth = FirebaseAuth.getInstance();
+
+        recyclerView = findViewById(R.id.recyclerView);
+        myRef = FirebaseDatabase.getInstance("https://graphic-994d5-default-rtdb.firebaseio.com/").getReference("orders");
+         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        ArrayList<Order> orders = new ArrayList<>();
-        OrderAdapter orderAdapter = new OrderAdapter(orders); // Pass your data list to the adapter
+        orders = new ArrayList<>();
+        orderAdapter = new OrderAdapter(orders);
         recyclerView.setAdapter(orderAdapter);
 
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://graphic-994d5-default-rtdb.firebaseio.com/");
-        DatabaseReference myRef = firebaseDatabase.getReference("orders");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
                 orders.clear();
-
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    Order order= snapshot.getValue(Order.class);
-
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    Order order = dataSnapshot.getValue(Order.class);
                     orders.add(order);
                 }
                 orderAdapter.notifyDataSetChanged();
@@ -52,5 +61,21 @@ public class AllOrders extends AppCompatActivity {
 
             }
         });
+
     }
+    //menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.home_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        super.onOptionsItemSelected(item);
+        startActivity(new Intent(AllOrders.this, MainActivity.class));
+        return true;
+    }
+
 }
